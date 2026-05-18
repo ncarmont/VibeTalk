@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
+    <key>CFBundleExecutable</key>
+    <string>VibeTalk</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.vibetalk.app</string>
+    <key>CFBundleName</key>
+    <string>VibeTalk</string>
+    <key>CFBundleDisplayName</key>
+    <string>VibeTalk</string>
+    <key>CFBundleVersion</key>
+    <string>1.0</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>13.0</string>
+    <key>LSUIElement</key>
+    <false/>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>VibeTalk needs microphone access to transcribe your speech in real-time.</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>VibeTalk uses on-device speech recognition to convert your voice to text locally and privately.</string>
+    <key>NSDesktopFolderUsageDescription</key>
+    <string>VibeTalk shows recent Desktop screenshots and images so you can paste or drag them into your current app.</string>
+    <key>NSHumanReadableCopyright</key>
+    <string>Copyright 2025 VibeTalk. All rights reserved.</string>
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.utilities</string>
+</dict>
+</plist>

@@ -1,0 +1,337 @@
+@import "tailwindcss";
+
+:root {
+  --accent: #7359F2;
+  --accent-light: #8B6FF5;
+  --accent-glow: rgba(115, 89, 242, 0.4);
+  --bg: #0A0A0F;
+  --card: #111117;
+  --card-border: rgba(255, 255, 255, 0.06);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+/* ═══════ Section slide-in ═══════ */
+@keyframes section-slide-in {
+  0% { opacity: 0; transform: translateY(60px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+body {
+  background: var(--bg);
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ═══════ Animated gradient border ═══════ */
+@keyframes border-rotate {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+/* ═══════ Float animation ═══════ */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ═══════ Hero text entrance ═══════ */
+@keyframes hero-in {
+  0% { opacity: 0; transform: translateY(30px) scale(0.96); filter: blur(8px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+.animate-hero-in {
+  animation: hero-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+.animate-hero-in-d1 {
+  animation: hero-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  opacity: 0;
+}
+.animate-hero-in-d2 {
+  animation: hero-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  opacity: 0;
+}
+.animate-hero-in-d3 {
+  animation: hero-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+  opacity: 0;
+}
+.animate-hero-in-d4 {
+  animation: hero-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+  opacity: 0;
+}
+.animate-hero-in-d5 {
+  animation: hero-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
+  opacity: 0;
+}
+
+/* ═══════ Glow pulse ═══════ */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 40px rgba(115, 89, 242, 0.3); }
+  50% { box-shadow: 0 0 80px rgba(115, 89, 242, 0.5), 0 0 120px rgba(115, 89, 242, 0.2); }
+}
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ═══════ Gradient text shimmer ═══════ */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ═══════ Feature card hover glow ═══════ */
+.feature-card {
+  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 1rem;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent, transparent);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  transition: background 0.4s ease;
+  pointer-events: none;
+}
+.feature-card:hover::before {
+  background: linear-gradient(135deg, rgba(115,89,242,0.5), rgba(167,139,250,0.3), rgba(115,89,242,0.5));
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(115, 89, 242, 0.3);
+}
+
+/* ═══════ Spinning ring ═══════ */
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* ═══════ Noise texture overlay ═══════ */
+.noise-overlay::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* ═══════ Comparison table ═══════ */
+.compare-row {
+  transition: background 0.2s ease;
+}
+.compare-row:hover {
+  background: rgba(115, 89, 242, 0.05);
+}
+
+/* ═══════ Responsive adjustments ═══════ */
+@media (max-width: 640px) {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+/* ═══════ CTA button shine ═══════ */
+@keyframes btn-shine {
+  0% { left: -100%; }
+  20% { left: 100%; }
+  100% { left: 100%; }
+}
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation: btn-shine 4s ease-in-out infinite;
+}
+
+/* ═══════ Download button glow ═══════ */
+@keyframes download-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(115, 89, 242, 0.3), 0 0 40px rgba(115, 89, 242, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(115, 89, 242, 0.5), 0 0 60px rgba(115, 89, 242, 0.25);
+  }
+}
+.animate-download-glow {
+  animation: download-glow 3s ease-in-out infinite;
+}
+
+/* ═══════ Scroll indicator ═══════ */
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.5; }
+}
+.animate-scroll-bounce {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+/* ═══════ Live demo meter ═══════ */
+@keyframes demo-meter-rise {
+  0%, 100% {
+    transform: scaleY(0.28);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.demo-meter-bar {
+  width: 6px;
+  height: 100%;
+  border-radius: 999px;
+  transform-origin: bottom;
+  background: linear-gradient(180deg, rgba(199, 185, 255, 0.95), rgba(115, 89, 242, 0.2));
+  opacity: 0.18;
+}
+
+.demo-meter-bar-live {
+  animation: demo-meter-rise 0.9s ease-in-out infinite;
+}
+
+/* ═══════ Pill pop-in entrance ═══════ */
+@keyframes pill-pop-in {
+  0%   { opacity: 0; transform: scale(0.72) translateY(12px); }
+  60%  { opacity: 1; transform: scale(1.06) translateY(-4px); }
+  78%  { transform: scale(0.97) translateY(1px); }
+  90%  { transform: scale(1.02) translateY(-1px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.animate-pill-pop-in {
+  animation: pill-pop-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+/* ═══════ Pill scale breathing ═══════ */
+@keyframes pill-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+.animate-pill-scale {
+  animation: pill-scale 8s ease-in-out infinite;
+}
+
+/* ═══════ Mic button glow pulse ═══════ */
+@keyframes mic-ripple {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+@keyframes mic-ripple2 {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.animate-mic-glow {
+  box-shadow: 0 0 16px rgba(115, 89, 242, 0.6);
+  position: relative;
+}
+.animate-mic-glow::before,
+.animate-mic-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: rgba(115, 89, 242, 0.35);
+  animation: mic-ripple 1.8s ease-out infinite;
+  pointer-events: none;
+}
+.animate-mic-glow::after {
+  background: rgba(115, 89, 242, 0.2);
+  animation: mic-ripple2 1.8s ease-out 0.6s infinite;
+}
+
+/* ═══════ Text pulse attention ═══════ */
+@keyframes text-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+.animate-text-pulse {
+  animation: text-pulse 3s ease-in-out infinite;
+}
+
+/* ═══════ Fade in animation ═══════ */
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 1.2s ease-in-out forwards;
+}
+
+/* ═══════ Slide up animation ═══════ */
+@keyframes slide-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slide-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ═══════ Scale in animation ═══════ */
+@keyframes scale-in {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-scale-in {
+  animation: scale-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ═══════ Word highlight animation ═══════ */
+@keyframes pill-glow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(115,89,242,0.08), 0 8px 32px rgba(0,0,0,0.4), 0 0 18px rgba(115,89,242,0.12); }
+  50% { box-shadow: 0 0 0 1px rgba(115,89,242,0.22), 0 8px 32px rgba(0,0,0,0.4), 0 0 32px rgba(115,89,242,0.28); }
+}
+
+.animate-pill-glow {
+  animation: pill-glow 3s ease-in-out infinite;
+}
+
+@keyframes word-highlight {
+  0% { color: rgb(229, 229, 229); transform: scale(1); }
+  50% { color: #7359F2; transform: scale(1.15); }
+  100% { color: rgb(229, 229, 229); transform: scale(1); }
+}
+
+@keyframes word-highlight-loop {
+  0%, 44% { color: rgb(200, 200, 210); text-shadow: none; }
+  50% { color: #a78bfa; text-shadow: 0 0 18px rgba(167,139,250,0.6); }
+  56%, 100% { color: rgb(200, 200, 210); text-shadow: none; }
+}

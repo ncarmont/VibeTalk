@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Build artifacts
+macos-app/build/
+macos-app/AppIcon.iconset/
+
+# Environment & secrets
+.env
+.env.*
+*.pem
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE & editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code internal files — never commit these
+.claude/
+CLAUDE.md
+AGENTS.md
+memory/
+
+# Internal marketing assets
+marketing/
+
+# Website build (separate deployment)
+website/
+
+# Misc
+Thumbs.db
